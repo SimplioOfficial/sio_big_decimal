@@ -24,11 +24,5 @@ jobs:
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed .
 
-      - name: Run unit tests directly with flutter test
-        run: dart test test --coverage
-
-      - name: Upload unit tests coverage to Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: coverage/lcov.info
+      - name: Run unit tests
+        run: dart test test
