@@ -120,7 +120,7 @@ class BigDecimal extends Equatable {
   /// ```
   const BigDecimal.zero({
     int precision = defaultPrecision,
-  }) : this._(null, const [], null, precision);
+  }) : this._('', const [], null, precision);
 
   const BigDecimal._(
     this._sign,
@@ -129,7 +129,7 @@ class BigDecimal extends Equatable {
     this.precision,
   );
 
-  final String? _sign;
+  final String _sign;
 
   /// must be a valid `int` value. it is list of integers
   final List<int> _abs;
