@@ -242,4 +242,21 @@ void main() {
       );
     });
   });
+
+  group('BigDecimal getters tests -', () {
+    test('one', () {
+      expect(BigDecimal.one.toBigInt(), BigInt.one);
+      expect(BigDecimal.one.toString(), '1');
+    });
+    test('two', () {
+      expect(BigDecimal.two.toBigInt(), BigInt.two);
+      expect(BigDecimal.two.toString(), '2');
+    });
+  });
+
+  test('compareTo', () {
+    expect(BigDecimal.one.compareTo(BigDecimal.two), -1);
+    expect(BigDecimal.two.compareTo(BigDecimal.one), 1);
+    expect(BigDecimal.one.compareTo(BigDecimal.one), 0);
+  });
 }

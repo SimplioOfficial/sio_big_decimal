@@ -140,6 +140,9 @@ class BigDecimal extends Equatable {
   /// represents decimal place
   final int precision;
 
+  static BigDecimal get one => BigDecimal.fromBigInt(BigInt.one);
+  static BigDecimal get two => BigDecimal.fromBigInt(BigInt.two);
+
   bool get isZero =>
       (_abs.isEmpty || (_abs[0] == 0 && _abs.length == 1)) && _dec == null;
   bool get isNotZero => !isZero;
@@ -147,6 +150,7 @@ class BigDecimal extends Equatable {
   bool get isNotDecimal => !isDecimal;
   bool get isFinite =>
       _dec == null || (_dec != null && _dec!.length <= precision);
+  bool get isNegative => _sign == '-';
 
   /// Addition operator.
   ///
@@ -354,6 +358,21 @@ class BigDecimal extends Equatable {
     } else {
       return quotient.isOdd;
     }
+  }
+
+  /// Compares this to `other`.
+  ///
+  /// Returns a negative number if `this` is less than `other`, zero if they are
+  /// equal, and a positive number if `this` is greater than `other`.
+  ///
+  /// Example:
+  /// ```dart
+  /// print(BigDecimal.one.compareTo(BigDecimal.two)); // => -1
+  /// print(BigDecimal.two.compareTo(BigDecimal.one)); // => 1
+  /// print(BigDecimal.one.compareTo(BigDecimal.one)); // => 0
+  /// ```
+  int compareTo(BigDecimal other) {
+    return toBigInt().compareTo(other.toBigInt());
   }
 
   BigDecimal clear() => BigDecimal.zero(precision: precision);
