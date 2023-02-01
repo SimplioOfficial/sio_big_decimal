@@ -1,3 +1,8 @@
+## 0.1.3
+
+- Added compareTo method.
+- Added isNegative property.
+- Added BigDecimal.one and BigDecimal.two.
 ## 0.1.2
 
 - Made implicit sign empty string.
