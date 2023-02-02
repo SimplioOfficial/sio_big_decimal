@@ -376,6 +376,33 @@ class BigDecimal extends Equatable implements Comparable<BigDecimal> {
     return toBigInt().compareTo(other.toBigInt());
   }
 
+  /// Whether this [BigDecimal] is numerically smaller than [other].
+  bool operator <(BigDecimal other) => compareTo(other) < 0;
+
+  /// Whether this [BigDecimal] is numerically smaller than or equal to [other].
+  bool operator <=(BigDecimal other) => compareTo(other) <= 0;
+
+  /// Whether this [BigDecimal] is numerically greater than [other].
+  bool operator >(BigDecimal other) => compareTo(other) > 0;
+
+  /// Whether this [BigDecimal] is numerically greater than or equal to [other].
+  bool operator >=(BigDecimal other) => compareTo(other) >= 0;
+
+  /// Returns the absolute value of this [BigDecimal].
+  ///
+  /// For any [BigDecimal] `x`, the result is the same as `x < 0 ? -x : x`.
+  BigDecimal abs() => _copyWith(sign: '');
+
+  /// Return the negative value of this [BigDecimal].
+  ///
+  /// The result of negating a [BigDecimal] always has the opposite sign,
+  /// except for zero, which is its own negation.
+  BigDecimal operator -() => isZero
+      ? _copyWith(sign: '')
+      : isNegative
+          ? _copyWith(sign: '')
+          : _copyWith(sign: '-');
+
   BigDecimal clear() => BigDecimal.zero(precision: precision);
 
   BigDecimal removeValue() {
@@ -467,5 +494,5 @@ class BigDecimal extends Equatable implements Comparable<BigDecimal> {
   }
 
   @override
-  List<Object?> get props => [_abs, _dec];
+  List<Object?> get props => [_sign, _abs, _dec];
 }
