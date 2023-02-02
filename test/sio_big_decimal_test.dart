@@ -60,6 +60,41 @@ void main() {
   });
 
   group('BigDecimal operators tests -', () {
+    test('smaller than (<)', () {
+      expect(BigDecimal.one < BigDecimal.two, true);
+      expect(BigDecimal.zero() < BigDecimal.zero(precision: 10), false);
+      expect(BigDecimal.parse('30.00') < BigDecimal.parse('30'), false);
+      expect(BigDecimal.parse('10') < BigDecimal.parse('-10'), false);
+      expect(BigDecimal.zero() < BigDecimal.parse('-0'), false);
+    });
+    test('smaller than or equal (<=)', () {
+      expect(BigDecimal.one <= BigDecimal.two, true);
+      expect(BigDecimal.zero() <= BigDecimal.zero(precision: 10), true);
+      expect(BigDecimal.parse('30.00') <= BigDecimal.parse('30'), true);
+      expect(BigDecimal.parse('10') <= BigDecimal.parse('-10'), false);
+      expect(BigDecimal.zero() <= BigDecimal.parse('-0'), true);
+    });
+    test('greater than (>)', () {
+      expect(BigDecimal.one > BigDecimal.two, false);
+      expect(BigDecimal.zero() > BigDecimal.zero(precision: 10), false);
+      expect(BigDecimal.parse('30.00') > BigDecimal.parse('30'), false);
+      expect(BigDecimal.parse('10') > BigDecimal.parse('-10'), true);
+      expect(BigDecimal.zero() > BigDecimal.parse('-0'), false);
+    });
+    test('smaller than or equal (>=)', () {
+      expect(BigDecimal.one >= BigDecimal.two, false);
+      expect(BigDecimal.zero() >= BigDecimal.zero(precision: 10), true);
+      expect(BigDecimal.parse('30.00') >= BigDecimal.parse('30'), true);
+      expect(BigDecimal.parse('10') >= BigDecimal.parse('-10'), true);
+      expect(BigDecimal.zero() >= BigDecimal.parse('-0'), true);
+    });
+
+    test('negation -()', () {
+      expect((-BigDecimal.one), BigDecimal.parse('-1'));
+      expect(-BigDecimal.parse('-1'), BigDecimal.one);
+      expect(-BigDecimal.zero(), BigDecimal.zero());
+    });
+
     test('addition (+)', () {
       expect(
         (BigDecimal.parse('1.222', precision: 3) +
@@ -240,6 +275,11 @@ void main() {
             .toString(),
         '10.1019294878270532377',
       );
+    });
+    test('abs', () {
+      expect(BigDecimal.one.abs(), BigDecimal.one);
+      expect((-BigDecimal.one).abs(), BigDecimal.one);
+      expect(BigDecimal.parse('-1').abs(), BigDecimal.one);
     });
   });
 
