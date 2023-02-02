@@ -12,4 +12,4 @@ dev_dependencies:
 dependencies:
   decimal: ^2.3.2
   equatable: ^2.0.5
-  intl: ^0.17.0
+  intl: ^0.18.0
