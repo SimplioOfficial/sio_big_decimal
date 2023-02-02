@@ -4,7 +4,7 @@ import 'package:decimal/intl.dart';
 import 'package:equatable/equatable.dart';
 import 'package:intl/intl.dart';
 
-class BigDecimal extends Equatable {
+class BigDecimal extends Equatable implements Comparable<BigDecimal> {
   static const defaultPrecision = 0;
 
   /// Create a new [BigDecimal] from a [value] of type [BigInt] given a
@@ -371,6 +371,7 @@ class BigDecimal extends Equatable {
   /// print(BigDecimal.two.compareTo(BigDecimal.one)); // => 1
   /// print(BigDecimal.one.compareTo(BigDecimal.one)); // => 0
   /// ```
+  @override
   int compareTo(BigDecimal other) {
     return toBigInt().compareTo(other.toBigInt());
   }
