@@ -1,7 +1,9 @@
+## 0.1.5
+- Fixed bug in compareTo.
 ## 0.1.4
 - Added `<`,`<=`,`>`,`>=` operators.
 - Added `abs` method.
-- Implemented Comparable interface.
+- Implemented `Comparable` interface.
 ## 0.1.3
 - Added `compareTo` method.
 - Added `isNegative` property.

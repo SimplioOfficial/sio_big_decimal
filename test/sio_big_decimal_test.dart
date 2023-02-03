@@ -298,5 +298,6 @@ void main() {
     expect(BigDecimal.one.compareTo(BigDecimal.two), -1);
     expect(BigDecimal.two.compareTo(BigDecimal.one), 1);
     expect(BigDecimal.one.compareTo(BigDecimal.one), 0);
+    expect(BigDecimal.parse('1', precision: 2).compareTo(BigDecimal.one), 0);
   });
 }

@@ -1,6 +1,6 @@
 name: sio_big_decimal
 description: Numeric library to manipulate very big numbers keeping very high precision.
-version: 0.1.4
+version: 0.1.5
 repository: https://github.com/SimplioOfficial/sio_big_decimal
 
 environment:
