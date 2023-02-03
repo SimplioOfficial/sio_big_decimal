@@ -373,7 +373,7 @@ class BigDecimal extends Equatable implements Comparable<BigDecimal> {
   /// ```
   @override
   int compareTo(BigDecimal other) {
-    return toBigInt().compareTo(other.toBigInt());
+    return toDecimal().compareTo(other.toDecimal());
   }
 
   /// Whether this [BigDecimal] is numerically smaller than [other].
