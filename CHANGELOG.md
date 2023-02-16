@@ -1,3 +1,7 @@
+## 0.2.0
+- Changed `zero()` to `zero`
+- Fixed bug in `isZero`
+- Refactor `clear()`
 ## 0.1.5
 - Fixed bug in compareTo.
 ## 0.1.4

@@ -1,8 +1,5 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
+/// Numeric library to manipulate very big numbers
+/// keeping very high precision.
 library sio_big_decimal;
 
 export 'src/sio_big_decimal_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.

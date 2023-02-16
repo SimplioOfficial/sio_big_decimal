@@ -106,22 +106,6 @@ class BigDecimal extends Equatable implements Comparable<BigDecimal> {
     );
   }
 
-  /// The [BigDecimal] corresponding to `0`.
-  ///
-  /// [defaultPrecision] is 0.
-  ///
-  /// Negative [precision] will default to `0`.
-  ///
-  /// Example:
-  /// ```dart
-  /// print(BigDecimal.zero()); // 0
-  /// print(BigDecimal.zero(precision: 8)); // 0.00000000
-  /// print(BigDecimal.zero(precision: -1)); // 0
-  /// ```
-  const BigDecimal.zero({
-    int precision = defaultPrecision,
-  }) : this._('', const [], null, precision);
-
   const BigDecimal._(
     this._sign,
     this._abs,
@@ -140,11 +124,16 @@ class BigDecimal extends Equatable implements Comparable<BigDecimal> {
   /// represents decimal place
   final int precision;
 
+  /// The [BigDecimal] corresponding to `0`.
+  static BigDecimal get zero => BigDecimal.fromBigInt(BigInt.zero);
+
+  /// The [BigDecimal] corresponding to `1`.
   static BigDecimal get one => BigDecimal.fromBigInt(BigInt.one);
+
+  /// The [BigDecimal] corresponding to `2`.
   static BigDecimal get two => BigDecimal.fromBigInt(BigInt.two);
 
-  bool get isZero =>
-      (_abs.isEmpty || (_abs[0] == 0 && _abs.length == 1)) && _dec == null;
+  bool get isZero => toBigInt() == BigInt.zero;
   bool get isNotZero => !isZero;
   bool get isDecimal => _dec != null;
   bool get isNotDecimal => !isDecimal;
@@ -403,7 +392,7 @@ class BigDecimal extends Equatable implements Comparable<BigDecimal> {
           ? _copyWith(sign: '')
           : _copyWith(sign: '-');
 
-  BigDecimal clear() => BigDecimal.zero(precision: precision);
+  BigDecimal clear() => _copyWith(abs: [0], dec: [], sign: '');
 
   BigDecimal removeValue() {
     if (_abs.isEmpty) return _copyWith();
