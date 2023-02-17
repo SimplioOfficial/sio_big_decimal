@@ -125,7 +125,20 @@ class BigDecimal extends Equatable implements Comparable<BigDecimal> {
   final int precision;
 
   /// The [BigDecimal] corresponding to `0`.
-  static BigDecimal get zero => BigDecimal.fromBigInt(BigInt.zero);
+  ///
+  /// [defaultPrecision] is 0.
+  ///
+  /// Negative [precision] will default to `0`.
+  ///
+  /// Example:
+  /// ```dart
+  /// print(BigDecimal.zero()); // 0
+  /// print(BigDecimal.zero(precision: 8)); // 0.00000000
+  /// print(BigDecimal.zero(precision: -1)); // 0
+  /// ```
+  const BigDecimal.zero({
+    int precision = defaultPrecision,
+  }) : this._('', const [0], null, precision);
 
   /// The [BigDecimal] corresponding to `1`.
   static BigDecimal get one => BigDecimal.fromBigInt(BigInt.one);

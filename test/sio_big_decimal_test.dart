@@ -53,36 +53,42 @@ void main() {
     });
   });
 
+  test('zero', () {
+    expect(BigDecimal.zero().toString(), '0');
+    expect(BigDecimal.zero(precision: 8).toString(), '0.00000000');
+    expect(BigDecimal.zero(precision: -1).toString(), '0');
+  });
+
   group('BigDecimal operators tests -', () {
     test('smaller than (<)', () {
       expect(BigDecimal.one < BigDecimal.two, true);
       expect(BigDecimal.parse('30.00') < BigDecimal.parse('30'), false);
       expect(BigDecimal.parse('10') < BigDecimal.parse('-10'), false);
-      expect(BigDecimal.zero < BigDecimal.parse('-0'), false);
+      expect(BigDecimal.zero() < BigDecimal.parse('-0'), false);
     });
     test('smaller than or equal (<=)', () {
       expect(BigDecimal.one <= BigDecimal.two, true);
       expect(BigDecimal.parse('30.00') <= BigDecimal.parse('30'), true);
       expect(BigDecimal.parse('10') <= BigDecimal.parse('-10'), false);
-      expect(BigDecimal.zero <= BigDecimal.parse('-0'), true);
+      expect(BigDecimal.zero() <= BigDecimal.parse('-0'), true);
     });
     test('greater than (>)', () {
       expect(BigDecimal.one > BigDecimal.two, false);
       expect(BigDecimal.parse('30.00') > BigDecimal.parse('30'), false);
       expect(BigDecimal.parse('10') > BigDecimal.parse('-10'), true);
-      expect(BigDecimal.zero > BigDecimal.parse('-0'), false);
+      expect(BigDecimal.zero() > BigDecimal.parse('-0'), false);
     });
     test('smaller than or equal (>=)', () {
       expect(BigDecimal.one >= BigDecimal.two, false);
       expect(BigDecimal.parse('30.00') >= BigDecimal.parse('30'), true);
       expect(BigDecimal.parse('10') >= BigDecimal.parse('-10'), true);
-      expect(BigDecimal.zero >= BigDecimal.parse('-0'), true);
+      expect(BigDecimal.zero() >= BigDecimal.parse('-0'), true);
     });
 
     test('negation -()', () {
       expect((-BigDecimal.one), BigDecimal.parse('-1'));
       expect(-BigDecimal.parse('-1'), BigDecimal.one);
-      expect(-BigDecimal.zero, BigDecimal.zero);
+      expect(-BigDecimal.zero(), BigDecimal.zero());
     });
 
     test('addition (+)', () {
@@ -274,11 +280,6 @@ void main() {
   });
 
   group('BigDecimal getters tests -', () {
-    test('zero', () {
-      expect(BigDecimal.zero.toBigInt(), BigInt.zero);
-      expect(BigDecimal.zero.toString(), '0');
-    });
-
     test('one', () {
       expect(BigDecimal.one.toBigInt(), BigInt.one);
       expect(BigDecimal.one.toString(), '1');
