@@ -1,9 +1,11 @@
+## 0.2.1
+- Revert `zero()` cause `const` is very valuable.
 ## 0.2.0
-- Changed `zero()` to `zero`
-- Fixed bug in `isZero`
-- Refactor `clear()`
+- Changed `zero()` to `zero`.
+- Fixed bug in `isZero`.
+- Refactor `clear()`.
 ## 0.1.5
-- Fixed bug in compareTo.
+- Fixed bug in `compareTo`.
 ## 0.1.4
 - Added `<`,`<=`,`>`,`>=` operators.
 - Added `abs` method.
