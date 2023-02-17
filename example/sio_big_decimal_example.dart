@@ -48,10 +48,14 @@ void main() {
     print(e);
   }
   print('==================================================');
+  print(BigDecimal.zero()); // 0
+  print(BigDecimal.zero(precision: 8)); // 0.00000000
+  print(BigDecimal.zero(precision: -1)); // 0
+  print('==================================================');
   final x = BigDecimal.parse('1.222', precision: 3);
   final y = BigDecimal.parse('0.2225', precision: 4);
   final z = BigDecimal.parse('1.888', precision: 4);
-  final zero = BigDecimal.zero;
+  final zero = BigDecimal.zero();
   final addition = x + z; // 3.11 (precision 2)
   final subtract = x - y; // 0.9995 (precision 4)
   final multiplication = x * z; // 2.307136 (precision: 6)
