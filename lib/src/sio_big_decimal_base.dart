@@ -405,7 +405,7 @@ class BigDecimal extends Equatable implements Comparable<BigDecimal> {
           ? _copyWith(sign: '')
           : _copyWith(sign: '-');
 
-  BigDecimal clear() => _copyWith(abs: [0], dec: [], sign: '');
+  BigDecimal clear() => BigDecimal.zero(precision: precision);
 
   BigDecimal removeValue() {
     if (_abs.isEmpty) return _copyWith();
@@ -496,5 +496,5 @@ class BigDecimal extends Equatable implements Comparable<BigDecimal> {
   }
 
   @override
-  List<Object?> get props => [_sign, _abs, _dec];
+  List<Object?> get props => [_sign, _abs, _dec, precision];
 }
