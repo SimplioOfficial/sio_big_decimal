@@ -1,3 +1,5 @@
+## 0.2.2
+- Fix `clear()`.
 ## 0.2.1
 - Revert `zero()` cause `const` is very valuable.
 ## 0.2.0
