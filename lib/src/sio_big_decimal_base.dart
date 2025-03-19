@@ -150,8 +150,7 @@ class BigDecimal extends Equatable implements Comparable<BigDecimal> {
   bool get isNotZero => !isZero;
   bool get isDecimal => _dec != null;
   bool get isNotDecimal => !isDecimal;
-  bool get isFinite =>
-      _dec == null || (_dec != null && _dec!.length <= precision);
+  bool get isFinite => _dec == null || (_dec.length <= precision);
   bool get isNegative => _sign == '-';
 
   /// Addition operator.
@@ -412,7 +411,7 @@ class BigDecimal extends Equatable implements Comparable<BigDecimal> {
     if (!isDecimal) return _copyWith(abs: List.from(_abs)..removeLast());
     if (_dec!.isEmpty) return BigDecimal._(_sign, _abs, null, precision);
 
-    return _copyWith(dec: List.from(_dec!)..removeLast());
+    return _copyWith(dec: List.from(_dec)..removeLast());
   }
 
   BigDecimal addValue(int? n) {
@@ -438,7 +437,7 @@ class BigDecimal extends Equatable implements Comparable<BigDecimal> {
 
   BigDecimal _addDec(int n) {
     if (isNotDecimal) return _copyWith(dec: [n]);
-    if (_dec!.length < precision) return _copyWith(dec: [..._dec!, n]);
+    if (_dec!.length < precision) return _copyWith(dec: [..._dec, n]);
     return _copyWith();
   }
 
