@@ -1,15 +1,15 @@
 name: sio_big_decimal
 description: Numeric library to manipulate very big numbers keeping very high precision.
-version: 0.2.2
+version: 0.3.0
 repository: https://github.com/SimplioOfficial/sio_big_decimal
 
 environment:
-  sdk: '>=2.18.4 <3.0.0'
+  sdk: ">=3.3.0 <4.0.0"
 
 dev_dependencies:
-  lints: ^2.0.0
+  lints: ^4.0.0
   test: ^1.16.0
 dependencies:
   decimal: ^2.3.2
   equatable: ^2.0.5
-  intl: ^0.18.0
+  intl: ^0.19.0

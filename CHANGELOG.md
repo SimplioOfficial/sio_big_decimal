@@ -1,3 +1,6 @@
+## 0.3.0
+- Migrate to null safety
+- Update min Flutter version
 ## 0.2.2
 - Fix `clear()`.
 ## 0.2.1
